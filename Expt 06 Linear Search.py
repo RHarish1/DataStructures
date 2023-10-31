@@ -7,10 +7,11 @@ for i in range(list_size):
 target = int(input("Enter the number to search for: "))
 
 def linear_search(arr, target):
-    for i, element in enumerate(arr):
-        if element == target:
+    for i in range(len(arr)):
+        if arr[i] == target:
             return i
     return -1
+
 
 result_linear = linear_search(my_list, target)
 if result_linear != -1:
