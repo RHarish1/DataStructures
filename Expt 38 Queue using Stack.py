@@ -15,15 +15,17 @@ class QueueUsingStacks:
                 return None
             while self.stack_enq:
                 self.stack_deq.append(self.stack_enq.pop())
-        return self.stack_deq.pop()
+        item = self.stack_deq.pop()
+        
+        while self.stack_deq:
+            self.stack_enq.append(self.stack_deq.pop())
+            
+        return item
 
-# ExampleZW
 queue = QueueUsingStacks()
 queue.enqueue(1)
 queue.enqueue(2)
 queue.enqueue(3)
-
-print("Please note: Printing is for reference only; the queue won't allow direct access.")
 
 print("Queue after enqueue(1):", queue.stack_enq, "=>", queue.stack_deq)
 print("Queue after enqueue(2):", queue.stack_enq, "=>", queue.stack_deq)
