@@ -1,4 +1,4 @@
-def heapify(arr, n, i):
+def heapify(arr, n, i): #making max heaps
     largest = i
     left = 2 * i + 1
     right = 2 * i + 2
