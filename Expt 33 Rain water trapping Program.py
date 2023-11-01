@@ -1,23 +1,18 @@
 class Solution:
-    def trap(self, height: List[int]) -> int:
-        left = 0
-        right = len(height) - 1
-        leftMax = 0
-        rightMax = 0
-        bucket = 0
+    def trap(self, height) -> int:
+        stack = []
+        water = 0
+        current = 0
 
-        while left < right:
-            if height[left] < height[right]:
-                if leftMax < height[left]:
-                    leftMax = height[left]
-                else:
-                    bucket += leftMax - height[left]
-                left += 1
-            else:
-                if rightMax < height[right]:
-                    rightMax = height[right]
-                else:
-                    bucket += rightMax - height[right]
-                right -= 1
-        
-        return bucket
+        while current < len(height):
+            while stack and height[current] > height[stack[-1]]:
+                top = stack.pop()
+                if not stack:
+                    break
+                distance = current - stack[-1] - 1
+                bounded_height = min(height[current], height[stack[-1]]) - height[top]
+                water += distance * bounded_height
+            stack.append(current)
+            current += 1
+
+        return water
