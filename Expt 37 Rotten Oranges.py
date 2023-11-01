@@ -17,7 +17,7 @@ def orangesRotting(grid):
     minutes = 0
 
     while rotten_oranges:
-        i, j, minutes = rotten_oranges.pop()
+        i, j, minutes = rotten_oranges.pop(0)
         for dx, dy in directions:
             x, y = i + dx, j + dy
             if 0 <= x < rows and 0 <= y < cols and grid[x][y] == 1:
